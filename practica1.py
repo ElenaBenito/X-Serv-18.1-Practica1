@@ -55,7 +55,7 @@ class shortWebApp(webapp.webApp):
 			if url in self.diccionario_real:	#Si está devolvemos la url que teníamos ya acortada
 				short_url = self.diccionario_real[url]				
 				code = "200 OK"
-				body = "<html><h1>Url ya acortada!</h1><body>""URL real: <a href=>"+ url +"</a><br><br>URL acortada: <a href=>" + short_url + "</a></body></html>"
+				body = "<html><h1>Url ya acortada!</h1><body>""URL real: <a href="+ url +">"+ url +"</a><br><br>URL acortada: <a href=" + url + ">" + short_url + "</a></body></html>"
 			else:	#Si no está en el diccionario la creamos y guardamos en el fichero csv		
 				short_url = "http://localhost:1234/" + str(self.num)
 				self.num += 1
@@ -64,7 +64,7 @@ class shortWebApp(webapp.webApp):
 				with open('diccionario.csv', 'a', newline='') as myfile:
 					newUrl = csv.writer(myfile).writerow([short_url, url])
 				code = "200 OK"
-				body = "<html><body>""URL real: <a href=>"+ url +"</a><br><br>URL acortada: <a href=>" + short_url + "</a></body></html>"
+				body = "<html><body>""URL real: <a href="+ url +">"+ url +"</a><br><br>URL acortada: <a href="+ url +">" + short_url + "</a></body></html>"
 		return(code, body)
 
 	def __init__(self, hostname, port):
